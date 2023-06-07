@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>player de video online</title>
+</head>
+<body>
+<br>
+<video id="custom_video_play" width="400" controls="controls">>
+<source src="Yes Bank Advertisment.mp4" type="../banner/video/tutorial.mp4"><source src="mov_bbb.flv" type="video/flv"> Browser Not Supporting
+</video>
+</div>
+<script>
+var myVideo=document.getElementById("custom_video_play");
+function makeBig()
+{
+myVideo.width=650;
+}
+function makeSmall()
+{
+myVideo.width=350;
+}
+ 
+function makeNormal()
+{
+myVideo.width=450;
+}
+</script>
+<div >
+<button onclick="makeBig()">Adjust: Large Screen</button>
+<button onclick="makeSmall()">Adjust: Small Screen</button>
+<button onclick="makeNormal()">Adjust: Normal Screen</button>
+<p></p>
+</body>
+
+</html>
