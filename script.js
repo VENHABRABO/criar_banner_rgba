@@ -236,5 +236,4 @@ async function displayColoredName(nickName, colors) {
     coloredNickP.append(coloredNickSpan);
   }
   coloredNick.append(coloredNickP);
-      }
-      
+	  }
