@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#4A2FBD">
     <meta name="description" content="Gere banner gradiente RGB para todos os aplicativos netfree e vps.">
     <meta name="robots" content="index, follow">
@@ -10,8 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://venhabrabo.github.io/criar_banner_rgba/fav2.ico" rel="icon" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script async src="https://imgbb.com/upload.js" data-palette="purple" data-auto-insert="html-embed-medium" data-sibling-pos="before" data-sibling="center"></script>
     <style>
         :root {
             --primary: #4A2FBD;
@@ -36,122 +34,142 @@
             flex-direction: column;
         }
 
+        body.dark {
+            background: #2D3436;
+            color: #F8F9FA;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem 1rem;
             flex: 1;
         }
 
-        #header {
+        .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
 
-        #title {
+        .title {
             color: var(--primary);
             font-weight: 700;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
         }
 
-        #graylabel1 {
+        .subtitle {
             color: var(--dark);
-            font-size: 1.1rem;
-            margin-top: 10px;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
         }
 
-        #input {
+        .subtitle.darkgray {
+            color: #B0B0B0;
+        }
+
+        .card {
             background: #fff;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        #input label {
+        body.dark .card {
+            background: #3A4042;
+        }
+
+        .form-label {
             font-weight: 500;
             color: var(--dark);
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
             display: block;
         }
 
-        #input input, #input select {
+        body.dark .form-label {
+            color: #F8F9FA;
+        }
+
+        .form-control, select {
             border-radius: var(--radius);
             border: 1px solid #ced4da;
-            padding: 8px;
+            padding: 0.5rem;
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
             font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
         }
 
-        #options {
-            margin-top: 20px;
+        .form-control.darktextboxes, select.dark {
+            background: #3A4042;
+            color: #F8F9FA;
+            border-color: #555;
         }
 
-        #appearance {
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .appearance-toggle {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
         }
 
-        #coloredNick {
+        .output-box {
             background: #fff;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 20px;
-            margin-bottom: 20px;
-            word-wrap: break-word;
-        }
-
-        #output {
-            margin-bottom: 15px;
-        }
-
-        #output label {
-            font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        #spitter {
-            background: #fff;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 15px;
-            height: 95px;
+            padding: 1rem;
+            min-height: 95px;
             white-space: pre-wrap;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
+            margin-bottom: 1rem;
         }
 
-        #error {
-            color: #dc3545;
-            font-size: 0.9rem;
+        body.dark .output-box {
+            background: #3A4042;
+            color: #F8F9FA;
         }
 
-        button {
+        .output-box.darktextboxes {
+            background: #3A4042;
+            color: #F8F9FA;
+            border-color: #555;
+        }
+
+        .btn {
             background-color: var(--primary);
             color: #fff;
-            font-size: 12px;
             border: none;
             border-radius: var(--radius);
-            padding: 8px 16px;
-            margin-left: 10px;
-            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             transition: var(--animation);
             font-family: 'Poppins', sans-serif;
+            font-size: 0.875rem;
         }
 
-        button:hover {
+        .btn:hover {
             background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #fff;
         }
 
         .footer {
             background-color: var(--primary);
             color: #fff;
-            padding: 20px;
+            padding: 1.5rem;
             text-align: center;
         }
 
@@ -166,175 +184,165 @@
             text-decoration: underline;
         }
 
-        .footer button {
-            background-color: var(--secondary);
-            color: var(--dark);
-            margin-left: 10px;
-        }
-
-        .footer button:hover {
-            background-color: #fff;
-            color: var(--dark);
-        }
-
-        #like {
+        .like-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 1rem;
+            right: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
             background-color: var(--primary);
             color: #fff;
-            padding: 10px 15px;
+            padding: 0.5rem 1rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--animation);
+            z-index: 1000;
         }
 
-        #like:hover {
+        .like-btn:hover {
             background-color: var(--primary-dark);
         }
 
-        #like .label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .error-text {
+            color: #dc3545;
+            font-size: 0.875rem;
+            display: none;
         }
 
-        #like .number {
-            font-weight: 600;
+        .error-text.darkerrortext {
+            color: #ff6b6b;
         }
 
+        /* Responsividade */
         @media (max-width: 768px) {
-            #title {
-                font-size: 2rem;
+            .container {
+                padding: 1rem;
             }
 
-            #graylabel1 {
-                font-size: 1rem;
+            .card {
+                padding: 1rem;
             }
 
-            #input, #coloredNick, #spitter {
-                padding: 15px;
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
             }
 
-            button {
-                font-size: 11px;
-                padding: 6px 12px;
+            .options-grid {
+                grid-template-columns: 1fr;
             }
 
-            #like {
-                bottom: 10px;
-                right: 10px;
-                padding: 8px 12px;
+            .output-box {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
-<body id="bg">
+<body>
     <div class="container">
-        <div id="header">
-            <h1 class="text-center" id="title"><strong>Gerador de Banner RGB</strong></h1>
-            <p id="graylabel1">Gerador de banner RGB V1.0</p>
-        </div>
+        <header class="header">
+            <h1 class="title">Gerador de Banner RGB</h1>
+            <p class="subtitle gray" id="graylabel1">Gerador de banner RGB V1.0</p>
+        </header>
 
-        <div class="col-md-2" id="input">
-            <label for="color1" id="label1">Cor Primária</label>
-            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color1" name="color1" onchange="updateSpitter(event)" oninput="updateSpitter(event)" value="00A1FB" />
+        <div class="card">
+            <label for="color1" class="form-label">Cor Primária</label>
+            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color1" name="color1" onchange="updateSpitter(event)" oninput="updateSpitter(event)" value="00A1FB">
 
-            <label for="color2" id="label2">Segunda Cor</label>
-            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color2" name="color2" onchange="updateSpitter(event)" oninput="updateSpitter(event)" value="01FD75" />
+            <label for="color2" class="form-label">Segunda Cor</label>
+            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color2" name="color2" onchange="updateSpitter(event)" oninput="updateSpitter(event)" value="01FD75">
 
-            <label for="color3" id="label3" style="display: none;">Terceira Cor</label>
-            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color3" name="color3" onchange="updateSpitter(event)" oninput="updateSpitter(event)" style="display: none;" value="FFFFFF" />
+            <label for="color3" class="form-label" style="display: none;" id="label3">Terceira Cor</label>
+            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color3" name="color3" onchange="updateSpitter(event)" oninput="updateSpitter(event)" style="display: none;" value="FFFFFF">
 
-            <label for="color4" id="label4" style="display: none;">Quarta Cor</label>
-            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color4" name="color4" onchange="updateSpitter(event)" oninput="updateSpitter(event)" style="display: none;" value="FFFFFF" />
+            <label for="color4" class="form-label" style="display: none;" id="label4">Quarta Cor</label>
+            <input class="form-control" data-jscolor="{preset:'small dark'}" id="color4" name="color4" onchange="updateSpitter(event)" oninput="updateSpitter(event)" style="display: none;" value="FFFFFF">
 
-            <label for="nickname" id="label5">Insira seu Texto</label>
-            <input class="form-control" id="nickname" name="nickname" onchange="updateSpitter(event)" oninput="updateSpitter(event)" placeholder="Texto" type="text" value="@VEM_BRABO" />
+            <label for="nickname" class="form-label">Insira seu Texto</label>
+            <input class="form-control" id="nickname" name="nickname" onchange="updateSpitter(event)" oninput="updateSpitter(event)" placeholder="Texto" type="text" value="@VEM_BRABO">
 
-            <div id="options">
-                <div id="typeslist">
-                    <label>Código</label>
-                    <select id="types" onchange="rgbtype = this.options[this.selectedIndex].innerText; updateSpitter(event);">
+            <div class="options-grid">
+                <div>
+                    <label class="form-label">Código</label>
+                    <select id="types" class="form-control" onchange="rgbtype = this.options[this.selectedIndex].innerText; updateSpitter(event);">
                         <option value="0">HTML</option>
+                        <option value="1">Essentials (&#rrggbb)</option>
+                        <option value="2">LuckPerms {#rrggbb}</option>
+                        <option value="3">Outros (&x&r&r&g&g&b&b)</option>
                     </select>
                 </div>
-
-                <div id="coloramountlist">
-                    <label>Quantidade de Cores</label>
-                    <select id="numOfColors" onchange="numberOfColors = this.options[this.selectedIndex].innerText; updateSpitter(event); hideColors();">
+                <div>
+                    <label class="form-label">Quantidade de Cores</label>
+                    <select id="numOfColors" class="form-control" onchange="numberOfColors = parseInt(this.value); updateSpitter(event); hideColors();">
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
                 </div>
-
-                <div id="appearance">
-                    <input id="darkmode" onclick="darkMode();" type="checkbox" />
-                    <label for="darkmode">Mudar cor do fundo do site</label>
+                <div class="appearance-toggle">
+                    <input id="darkmode" type="checkbox" checked onclick="darkMode();">
+                    <label for="darkmode">Modo Escuro</label>
                 </div>
             </div>
         </div>
 
-        <div class="minecraft" id="coloredNick"></div>
-        <div class="containerr">
-            <div id="output">
-                <label for="spitter" id="label4">Copie seu Banner HTML Customizado
-                    <button onclick="copyElementText()" type="button">Copiar Código</button>
-                    <button onclick="alert('VAMOS ASSISTIR O TUTORIAL EM VIDEO! CLIQUE NO BOTÃO AO LADO')">DICA</button>
-                    <a href="https://venhabrabo.github.io/criar_banner_rgba/video/tutorial.mp4"><strong>Tutorial em Vídeo</strong></a>
-                </label>
-            </div>
-        </div>
-        <pre class="pp" id="spitter" onclick="copyTextToClipboard(document.getElementById('spitter').textContent);"></pre>
+        <div class="card minecraft" id="coloredNick"></div>
 
-        <p id="error" style="display: none;">Observe que alguns aplicativos NetFree limitam o número de caracteres que você pode inserir.</p>
+        <div class="card">
+            <label class="form-label">Copie seu Banner HTML Customizado</label>
+            <pre class="output-box" id="spitter" onclick="copyTextToClipboard(this.textContent);"></pre>
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn" onclick="copyElementText()">Copiar Código</button>
+                <button class="btn" onclick="alert('VAMOS ASSISTIR O TUTORIAL EM VIDEO! CLIQUE NO BOTÃO AO LADO')">DICA</button>
+                <a href="https://venhabrabo.github.io/criar_banner_rgba/video/tutorial.mp4" class="btn">Tutorial em Vídeo</a>
+            </div>
+            <p class="error-text errortext" id="error">Observe que alguns aplicativos NetFree limitam o número de caracteres que você pode inserir.</p>
+        </div>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <div class="row align-items-end">
-                <div class="col-12 text-center">
-                    Editado por <a href="https://t.me/VEM_BRABO">@VEM_BRABO</a>
-                    <a href="https://vembrabo.alphi.media/portifolio"><button type="button">Portifólio</button></a>
-                </div>
-            </div>
+            Editado por <a href="https://t.me/VEM_BRABO">@VEM_BRABO</a>
+            <a href="https://gestao.alphi.media/pixdasorte"><button class="btn btn-secondary">Portifólio</button></a>
         </div>
     </footer>
 
-    <button id="like">
-        <div class="label">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.4 5.25C5.61914 5.25 3.25 7.3293 3.25 10.0298C3.25 11.8927 4.12235 13.4612 5.27849 14.7604C6.43066 16.0552 7.91714 17.142 9.26097 18.0516L11.5796 19.6211C11.8335 19.793 12.1665 19.793 12.4204 19.6211L14.739 18.0516C16.0829 17.142 17.5693 16.0552 18.7215 14.7604C19.8777 13.4612 20.75 11.8927 20.75 10.0298C20.75 7.3293 18.3809 5.25 15.6 5.25C14.1665 5.25 12.9052 5.92214 12 6.79183C11.0948 5.92214 9.83347 5.25 8.4 5.25Z" fill="white"/>
-            </svg>
-            Curtir
-        </div>
-        <div class="number" id="number">50</div>
+    <button class="like-btn" id="like">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.4 5.25C5.61914 5.25 3.25 7.3293 3.25 10.0298C3.25 11.8927 4.12235 13.4612 5.27849 14.7604C6.43066 16.0552 7.91714 17.142 9.26097 18.0516L11.5796 19.6211C11.8335 19.793 12.1665 19.793 12.4204 19.6211L14.739 18.0516C16.0829 17.142 17.5693 16.0552 18.7215 14.7604C19.8777 13.4612 20.75 11.8927 20.75 10.0298C20.75 7.3293 18.3809 5.25 15.6 5.25C14.1665 5.25 12.9052 5.92214 12 6.79183C11.0948 5.92214 9.83347 5.25 8.4 5.25Z" fill="white"/>
+        </svg>
+        <span>Curtir</span>
+        <span class="number" id="number">50</span>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://venhabrabo.github.io/criar_banner_rgba/jscolor.js"></script>
     <script>
         function copyElementText() {
-            var copyText = document.getElementById('spitter').innerText;
-            var elem = document.createElement("textarea");
-            document.body.appendChild(elem);
-            elem.value = copyText;
-            elem.select();
-            document.execCommand("copy");
-            document.body.removeChild(elem);
-            alert('Banner Copiado');
+            const text = document.getElementById('spitter').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Banner Copiado');
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        function copyTextToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Texto copiado para a área de transferência!');
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
         }
     </script>
-    <script src="https://venhabrabo.github.io/criar_banner_rgba/jscolor.js"></script>
     <script src="./script.js"></script>
-    <script src="./snowstorm.js"></script>
-    <script type="text/javascript" src="https://usuariosonline.s12.com.br/uo-aD7zB1bW61CD7872-52-0.js"></script>
-    <br>
-    <a href="https://usuariosonline.s12.com.br/" target="_blank">
-        <img src="https://usuariosonline.s12.com.br/selo/selo-uo.gif" alt="usuários online" border="0">
-    </a>
 </body>
 </html>
